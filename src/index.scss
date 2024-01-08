@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,700&display=swap');
+
+:root {
+    --body-background: #ffffff;
+    --body-text-color: #202C36;
+    --body-el: #ffffff;
+}
+
+.dark {
+    --body-background: #202C36;
+    --body-text-color: #ffffff;
+    --body-el: #2B3844;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    background-color: var(--body-background);
+    
+    color: var(--body-text-color);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.show-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--body-text-color);
+    background-color: var(--body-el);
+    width: 170px;
+    height: 50px;
+    border-radius: 30px;
+    margin: 0 auto;
+    border: 0;
+    cursor: pointer;
+    box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.03);
+    margin-top: 30px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

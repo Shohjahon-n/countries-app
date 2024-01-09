@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Search from "./components/Search/Search";
+import loaderSvg from './images/loader.svg';
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -11,13 +12,15 @@ class App extends React.Component {
             filteredCountries: [],
             region: '',
             visible: 8,
-            darkMode: false
+            darkMode: false,
+            loading: false
         };
     }
     componentDidMount() {
+        this.setState({ loading: true });
         fetch('https://restcountries.com/v3.1/all?fields=name,capital,currencies,flags,region,population,nativeName,borders,subregion,tld,languages')
             .then(response => response.json())
-            .then(data => this.setState({ countryList: data, filteredCountries: data }));
+            .then(data => this.setState({ countryList: data, filteredCountries: data, loading: false }));
     }
 
     handleSearch = (e) => {
@@ -63,11 +66,14 @@ class App extends React.Component {
                     onRegionChange={this.handleRegionSelect}
                     darkMode={this.state.darkMode}
                 />
-
+                {this.state.loading ? <div className="loader container">
+                    <img src={loaderSvg} alt="loader" />
+                </div> : null}
                 <Main countryList={filteredCountries.slice(0, this.state.visible)}
                     darkMode={this.state.darkMode} />
                 {!filteredCountries.length ?
-                    <div className="no-country">Country not found</div>
+                    this.state.loading ? null : (
+                        <div className="no-country">Country not found</div>)
                     :
                     filteredCountries.length > this.state.visible ?
                         <button className="show-more" onClick={this.showMore}>Show 8</button>

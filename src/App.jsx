@@ -50,36 +50,36 @@ class App extends React.Component {
     }
 
     toggleMode = () => {
-        let body = document.querySelector('body');
-        body.classList.toggle('dark');
         this.setState({ darkMode: !this.state.darkMode });
     }
     render() {
         const { filteredCountries, searchText } = this.state;
         return (
             <React.Fragment>
-                <Header toggleMode={this.toggleMode} darkMode={this.state.darkMode} />
-                <Search
-                    searchText={searchText}
-                    onSearchChange={this.handleSearch}
-                    region={this.state.region}
-                    onRegionChange={this.handleRegionSelect}
-                    darkMode={this.state.darkMode}
-                />
-                {this.state.loading ? <div className="loader container">
-                    <img src={loaderSvg} alt="loader" />
-                </div> : null}
-                <Main countryList={filteredCountries.slice(0, this.state.visible)}
-                    darkMode={this.state.darkMode} />
-                {!filteredCountries.length ?
-                    this.state.loading ? null : (
-                        <div className="no-country">Country not found</div>)
-                    :
-                    filteredCountries.length > this.state.visible ?
-                        <button className="show-more" onClick={this.showMore}>Show 8</button>
-                        : null
-                }
-            </React.Fragment>
+                <div className={`big-main ${this.state.darkMode ? 'dark' : ''}`}>
+                    <Header toggleMode={this.toggleMode} darkMode={this.state.darkMode} />
+                    <Search
+                        searchText={searchText}
+                        onSearchChange={this.handleSearch}
+                        region={this.state.region}
+                        onRegionChange={this.handleRegionSelect}
+                        darkMode={this.state.darkMode}
+                    />
+                    {this.state.loading ? <div className="loader container">
+                        <img src={loaderSvg} alt="loader" />
+                    </div> : null}
+                    <Main countryList={filteredCountries.slice(0, this.state.visible)}
+                        darkMode={this.state.darkMode} />
+                    {!filteredCountries.length ?
+                        this.state.loading ? null : (
+                            <div className="no-country">Country not found</div>)
+                        :
+                        filteredCountries.length > this.state.visible ?
+                            <button className="show-more" onClick={this.showMore}>Show 8</button>
+                            : null
+                    }
+                </div>
+            </React.Fragment >
         );
     }
 }

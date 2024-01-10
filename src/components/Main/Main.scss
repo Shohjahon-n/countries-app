@@ -8,6 +8,7 @@ main {
     flex-wrap: wrap;
 
     .card {
+        cursor: pointer;
         width: 264px;
         height: 336px;
         flex-shrink: 0;

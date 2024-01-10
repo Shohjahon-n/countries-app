@@ -25,7 +25,7 @@ class App extends React.Component {
 
     handleSearch = (e) => {
         const searchText = e.target.value;
-        this.setState({ searchText }, () => this.filterCountries());
+        this.setState({ searchText, visible: 8 }, () => this.filterCountries());
     }
 
     handleRegionSelect = (e) => {

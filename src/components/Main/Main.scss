@@ -339,3 +339,20 @@ main {
         }
     }
 }
+
+
+@media screen and (max-width:420px) {
+    .modal {
+        .modal-content {
+            .flag-img {
+                width: 80%;
+                height: 170px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
